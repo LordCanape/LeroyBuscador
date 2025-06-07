@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Producto</title>
+</head>
+<body>
+  <h1 id="nombreProducto"></h1>
+  <p id="descripcion"></p>
+  <img id="foto" src="" alt="Foto del producto" width="300">
+  <h3>Productos complementarios</h3>
+  <ul id="complementarios"></ul>
+
+  <script src="productos.js"></script>
+  <script>
+    const params = new URLSearchParams(window.location.search);
+    const ref = params.get("ref");
+
+    const producto = productos[ref];
+
+    if (producto) {
+      document.getElementById("nombreProducto").textContent = producto.nombre;
+      document.getElementById("descripcion").textContent = producto.descripcion;
+      document.getElementById("foto").src = producto.foto;
+
+      const lista = document.getElementById("complementarios");
+      producto.complementarios.forEach(comp => {
+        const li = document.createElement("li");
+        li.textContent = comp;
+        lista.appendChild(li);
+      });
+    } else {
+      document.body.innerHTML = "<h2>Producto no encontrado</h2>";
+    }
+  </script>
+</body>
+</html>

@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Buscar producto</title>
+</head>
+<body>
+  <h1>Buscar producto</h1>
+  <input type="text" id="referencia" placeholder="Introduce referencia">
+  <button onclick="buscarProducto()">Buscar</button>
+
+  <script>
+    function buscarProducto() {
+      const ref = document.getElementById("referencia").value;
+      if (ref) {
+        window.location.href = "producto.html?ref=" + encodeURIComponent(ref);
+      }
+    }
+  </script>
+</body>
+</html>
